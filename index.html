@@ -161,7 +161,7 @@
             <div class="es-tab1--item">
               <p>
                 <b>PO 3 TYGODNIACH</b>
-                REDUKCJA WSZYTKICH <br />
+                REDUKCJA WSZYSTKICH <br />
                 RODZAJÓW PRZEBARWIEŃ
               </p>
             </div>
@@ -178,7 +178,7 @@
               <p>
                 <strong
                   >[25% KWASÓW <br />
-                  [AHA + BHA + PHA]]</strong
+                  [AHA + BHA + PHA]</strong
                 >
                 POMAGAJĄ ZWĘZIĆ PORY <br />
                 i ZREDUKOWAĆ <br />NIEDOSKONAŁOŚCI
@@ -188,7 +188,7 @@
 
           <div class="es-tab-content es-tab-content--3">
             <p class="es-tab__main--title">
-              odpowiednie nawet <b>dla skóry wrażliwej</b>
+              odpowiedni nawet <b>dla skóry wrażliwej</b>
             </p>
             <p class="es-tab__main--title">
               <b> 90% KOBIET POTWIERDZA,</b>
@@ -240,7 +240,7 @@
             Wizażanki uwielbiają produkty
             <span>bright reveal</span>
           </h3>
-          <div class="es-slider__wrapper">
+          <div class="es-slider__wrapper background-1">
             <div class="es-slider__content">
               <div class="swiper swiper1">
                 <div class="swiper-wrapper">
@@ -252,6 +252,7 @@
                       <div class="es-slider__slide1__rightCtn">
                         <div class="es-slider__slide1__img--bottom">
                           <img
+                            class="es-slider__slide1--img"
                             src="./assets/images/wizaz_ocena.png"
                             alt="wizaż PL: 4.9 na 5 gwiazdek, na 442 recenzje"
                           />
@@ -429,6 +430,28 @@
                       >Kup teraz</a
                     >
                   </div>
+                  <div class="swiper-slide es-slider2__slide">
+                    <div class="es-cross__item">
+                      <div class="es-cross__img">
+                        <img src="./assets/images/cross-4.png" />
+                      </div>
+                      <div class="es-cross__info">
+                        <p class="es-cross__series-name">Bright reveal</p>
+                        <p class="es-cross__prod-name">serum</p>
+                        <p class="es-cross__prod-desc">
+                          Redukuje wszystkie rodzaje <br />przebarwień (w tym:
+                          potrądzikowe,<br />
+                          posłoneczne, związane z wiekiem)
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href="https://www.cocolita.pl/olejki-i-serum/loreal-bright-reveal-serum-na-przebarwienia-30ml"
+                      target="_blank"
+                      class="es-cross__link"
+                      >Kup teraz</a
+                    >
+                  </div>
 
                   <div class="swiper-slide es-slider2__slide">
                     <div class="es-cross__item">
@@ -472,29 +495,6 @@
                     </div>
                     <a
                       href="https://www.cocolita.pl/kremy-do-twarzy/loreal-bright-reveal-nawilzajacy-krem-spf50-50ml"
-                      target="_blank"
-                      class="es-cross__link"
-                      >Kup teraz</a
-                    >
-                  </div>
-
-                  <div class="swiper-slide es-slider2__slide">
-                    <div class="es-cross__item">
-                      <div class="es-cross__img">
-                        <img src="./assets/images/cross-4.png" />
-                      </div>
-                      <div class="es-cross__info">
-                        <p class="es-cross__series-name">Bright reveal</p>
-                        <p class="es-cross__prod-name">serum</p>
-                        <p class="es-cross__prod-desc">
-                          Redukuje wszystkie rodzaje <br />przebarwień (w tym:
-                          potrądzikowe,<br />
-                          posłoneczne, związane z wiekiem)
-                        </p>
-                      </div>
-                    </div>
-                    <a
-                      href="https://www.cocolita.pl/olejki-i-serum/loreal-bright-reveal-serum-na-przebarwienia-30ml"
                       target="_blank"
                       class="es-cross__link"
                       >Kup teraz</a
@@ -584,6 +584,34 @@
     </div>
     <script src="./assets/js/slider.js"></script>
     <script>
+      const sliderWrapper = document.querySelector(
+        '#es-loreal.es-loreal .es-slider__wrapper',
+      );
+
+      function updateBackground() {
+        setTimeout(() => {
+          const activeSlide = document.querySelector('.swiper-slide-active');
+
+          if (activeSlide) {
+            const innerSlide = activeSlide.querySelector('.es-slider__slide');
+
+            if (innerSlide) {
+              if (innerSlide.classList.contains('es-slider__slide--2')) {
+                sliderWrapper.classList.remove('background-1');
+                sliderWrapper.classList.add('background-2');
+              } else {
+                sliderWrapper.classList.remove('background-2');
+                sliderWrapper.classList.add('background-1');
+              }
+            } else {
+              // console.log('No inner slide found');
+            }
+          } else {
+            // console.log('No active slide found');
+          }
+        }, 100);
+      }
+
       const swiper = new Swiper('.swiper1', {
         loop: true,
         autoHeight: false,
@@ -596,6 +624,19 @@
           el: '.swiper1-pagination',
           clickable: true,
         },
+
+        on: {
+          init: updateBackground,
+          slideChange: updateBackground,
+        },
+      });
+
+      swiper.on('init', function () {
+        updateBackground();
+      });
+
+      swiper.on('slideChange', function () {
+        updateBackground();
       });
       const swiper2 = new Swiper('.swiper2', {
         loop: true,

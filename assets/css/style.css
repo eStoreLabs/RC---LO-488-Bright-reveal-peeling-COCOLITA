@@ -730,6 +730,16 @@
   overflow: hidden;
 }
 
+#es-loreal.es-loreal .es-slider__slide1__rightCtn {
+  margin: 0 auto;
+}
+#es-loreal.es-loreal .es-slider__slide1--img {
+  display: block;
+  max-width: 80%;
+  margin-top: 30%;
+  margin-left: 10%;
+}
+
 #es-loreal.es-loreal .es-slider__slide1__imgCtn img {
   scale: 1.05;
 }
@@ -1284,11 +1294,11 @@
   }
 
   #es-loreal.es-loreal .es-results__BA--przed {
-    top: 27%;
+    top: 25%;
   }
 
   #es-loreal.es-loreal .es-results__BA--po {
-    top: 27%;
+    top: 25%;
   }
 
   #es-loreal.es-loreal .es-use__single {
@@ -1757,7 +1767,7 @@
     padding: 32px 78px;
   }
 
-  #es-loreal.es-loreal .es-slider__wrapper::after {
+  #es-loreal.es-loreal .es-slider__wrapper.background-1::after {
     content: '';
     position: absolute;
     bottom: -25%;
@@ -1768,7 +1778,20 @@
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 2;
-    -webkit-animation: pulse 5s infinite;
+    animation: pulse 5s infinite;
+  }
+
+  #es-loreal.es-loreal .es-slider__wrapper.background-2::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    right: -4%;
+    width: 220px;
+    height: 220px;
+    background-image: url('../images/beads-2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
     animation: pulse 5s infinite;
   }
 
@@ -2110,8 +2133,11 @@
     /* margin-left: 58%; */
   }
 
+  #es-loreal.es-loreal .es-results__BA-group {
+    margin-bottom: 10px;
+  }
   #es-loreal.es-loreal .es-results__BA-group--number {
-    font-size: 45px;
+    font-size: 60px;
   }
   #es-loreal.es-loreal .es-results__BA-group {
     font-size: 24px;
